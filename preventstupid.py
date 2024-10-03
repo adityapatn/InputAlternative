@@ -1,7 +1,7 @@
 '''
 My bad code:
 
-def takeinput(message, datatype):
+def deprecatedfunction(message, datatype):
     tf = {True:True, 1:True, "1":True, "T":True, "True":True, "yes":True, "yeah":True, False:False, 0:False, "0":False, "F":False, "False":False, "no":False, "nah":False}
 
     value = input(message)
@@ -14,17 +14,28 @@ def takeinput(message, datatype):
             return takeinput(message, datatype)
     
     return value
-
-The better code (recommended to me by father)
 '''
+#The better code:
 
-def takeinput2(message, datatype):
+def takeinput(message, datatype):
+    tf = {True:True, 1:True, "1":True, "T":True, "True":True, "yes":True, "yeah":True, False:False, 0:False, "0":False, "F":False, "False":False, "no":False, "nah":False}
+    
     while True:
         value = input(message)
-        try:
-            return int(value)
-        except:
-            print("That can't be converted to an integer.")
 
-need = takeinput2("I need an integer: ", int)
-print(need)
+        if datatype == int:
+            try:
+                return int(value)
+            except:
+                print("That can't be converted to an integer.")
+        if datatype == float:
+            try:
+                return float(value)
+            except:
+                print("That can't be converted to a float.")
+        if datatype == bool:
+            try:
+                return tf[value]
+            except:
+                print("That can't be converted to a boolean.")
+        
